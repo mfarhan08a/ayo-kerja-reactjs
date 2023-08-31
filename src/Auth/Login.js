@@ -1,0 +1,88 @@
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../Context/Context";
+import { useHistory } from "react-router-dom";
+
+const Login = () => {
+  const { inputLogin, setInputLogin, functions } = useContext(Context);
+  const { functionLogin } = functions;
+  let history = useHistory();
+
+  const handleChange = (e) => {
+    let value = e.target.value;
+    let name = e.target.name;
+
+    setInputLogin({ ...inputLogin, [name]: value });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    functionLogin();
+  };
+
+  return (
+    <div className="w-full h-screen">
+      <div className="absolute bg-black w-full h-full bg-layer z-0"></div>
+      <div className="w-full h-screen font-sans bg-cover bg-landscape">
+        <div className="container flex items-center justify-center flex-1 h-full mx-auto ">
+          <div className="w-full max-w-lg absolute">
+            <div className="leading-loose">
+              <form onSubmit={handleLogin} method="POST" className="max-w-sm p-10 m-auto bg-white bg-opacity-25 rounded shadow-xl">
+                <p className="mb-8 text-2xl font-light text-center text-white">Login</p>
+                <div className="mb-2">
+                  <div className=" relative ">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={inputLogin.email}
+                      onChange={handleChange}
+                      className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+                <div className="mb-2">
+                  <div className=" relative ">
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      value={inputLogin.password}
+                      onChange={handleChange}
+                      className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                      placeholder="Password"
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center justify-between mt-4">
+                  <button
+                    type="submit"
+                    className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                  >
+                    Login
+                  </button>
+                </div>
+                <div className="text-center">
+                  <Link to={"/register"} className="right-0 inline-block text-sm font-light align-baseline text-slate-200 hover:text-slate-400">
+                    Create an account
+                  </Link>
+                </div>
+                <div className="text-center mt-5 ">
+                  <Link to={"/"} className="flex justify-center text-sm font-light text-slate-200 hover:text-slate-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="absolute mr-36 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    <span>Back to Main Page</span>
+                  </Link>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

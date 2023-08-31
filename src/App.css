@@ -1,0 +1,22 @@
+.home-image {
+  width: 30em;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.job {
+  width: 90%;
+  margin: 0 auto;
+}
+
+div.bg-layer {
+  opacity: 0.6;
+}
+
+div.bg-landscape {
+  background-image: url("https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg");
+}
+
+section.details {
+  height: 43em;
+}

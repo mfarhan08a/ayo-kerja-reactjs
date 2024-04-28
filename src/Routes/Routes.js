@@ -20,92 +20,92 @@ import JobDisplayMore from "../Pages/job-display-more";
 import JobDisplayDetails from "../Pages/job-display-details";
 
 const Routes = () => {
-  const LoginRoute = ({ ...props }) => {
-    if (Cookies.get("token") === undefined) {
-      return <Route {...props} />;
-    } else if (Cookies.get("token") !== undefined) {
-      return <Redirect to={"/"} />;
-    }
-  };
+	const LoginRoute = ({ ...props }) => {
+		if (Cookies.get("token") === undefined) {
+			return <Route {...props} />;
+		} else if (Cookies.get("token") !== undefined) {
+			return <Redirect to={"/"} />;
+		}
+	};
 
-  const DashboardRoute = ({ ...props }) => {
-    if (Cookies.get("token") === undefined) {
-      return <Redirect to={"/login"} />;
-    } else if (Cookies.get("token") !== undefined) {
-      return <Route {...props} />;
-    }
-  };
+	const DashboardRoute = ({ ...props }) => {
+		if (Cookies.get("token") === undefined) {
+			return <Redirect to={"/login"} />;
+		} else if (Cookies.get("token") !== undefined) {
+			return <Route {...props} />;
+		}
+	};
 
-  return (
-    <Router>
-      <Provider>
-        <Switch>
-          <Route path="/" exact>
-            <LandingLayout>
-              <Home />
-              <JobDisplay />
-            </LandingLayout>
-          </Route>
+	return (
+		<Router>
+			<Provider>
+				<Switch>
+					<Route path="/" exact>
+						<LandingLayout>
+							<Home />
+							<JobDisplay />
+						</LandingLayout>
+					</Route>
 
-          <Route path="/job-vacant" exact>
-            <LandingLayout>
-              <JobDisplayMore />
-            </LandingLayout>
-          </Route>
+					<Route path="/job-vacant" exact>
+						<LandingLayout>
+							<JobDisplayMore />
+						</LandingLayout>
+					</Route>
 
-          <Route path="/job-vacant/details/:id" exact>
-            <LandingLayout>
-              <JobDisplayDetails />
-            </LandingLayout>
-          </Route>
+					<Route path="/job-vacant/details/:id" exact>
+						<LandingLayout>
+							<JobDisplayDetails />
+						</LandingLayout>
+					</Route>
 
-          <LoginRoute path="/login" exact>
-            <Login />
-          </LoginRoute>
+					<LoginRoute path="/login" exact>
+						<Login />
+					</LoginRoute>
 
-          <LoginRoute path="/register" exact>
-            <Register />
-          </LoginRoute>
+					<LoginRoute path="/register" exact>
+						<Register />
+					</LoginRoute>
 
-          <DashboardRoute path="/dashboard" exact>
-            <DashboardLayout>
-              <Dashboard />
-            </DashboardLayout>
-          </DashboardRoute>
+					<DashboardRoute path="/dashboard" exact>
+						<DashboardLayout>
+							<Dashboard />
+						</DashboardLayout>
+					</DashboardRoute>
 
-          <DashboardRoute path="/dashboard/list-job-vacancy" exact>
-            <DashboardLayout>
-              <JobList />
-            </DashboardLayout>
-          </DashboardRoute>
+					<DashboardRoute path="/dashboard/list-job-vacancy" exact>
+						<DashboardLayout>
+							<JobList />
+						</DashboardLayout>
+					</DashboardRoute>
 
-          <DashboardRoute path="/dashboard/list-job-vacancy/form" exact>
-            <DashboardLayout>
-              <JobForm />
-            </DashboardLayout>
-          </DashboardRoute>
+					<DashboardRoute path="/dashboard/list-job-vacancy/form" exact>
+						<DashboardLayout>
+							<JobForm />
+						</DashboardLayout>
+					</DashboardRoute>
 
-          <DashboardRoute path="/dashboard/list-job-vacancy/form/edit/:Id" exact>
-            <DashboardLayout>
-              <JobForm />
-            </DashboardLayout>
-          </DashboardRoute>
+					<DashboardRoute path="/dashboard/list-job-vacancy/form/edit/:Id" exact>
+						<DashboardLayout>
+							<JobForm />
+						</DashboardLayout>
+					</DashboardRoute>
 
-          <DashboardRoute path="/dashboard/profile" exact>
-            <DashboardLayout>
-              <Profile />
-            </DashboardLayout>
-          </DashboardRoute>
+					<DashboardRoute path="/dashboard/profile" exact>
+						<DashboardLayout>
+							<Profile />
+						</DashboardLayout>
+					</DashboardRoute>
 
-          <DashboardRoute path="/dashboard/change-password" exact>
-            <DashboardLayout>
-              <ChangePassword />
-            </DashboardLayout>
-          </DashboardRoute>
-        </Switch>
-      </Provider>
-    </Router>
-  );
+					<DashboardRoute path="/dashboard/change-password" exact>
+						<DashboardLayout>
+							<ChangePassword />
+						</DashboardLayout>
+					</DashboardRoute>
+				</Switch>
+			</Provider>
+		</Router>
+	);
 };
 
 export default Routes;

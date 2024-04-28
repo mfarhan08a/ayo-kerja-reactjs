@@ -337,7 +337,6 @@ export const Provider = (props) => {
 		functionLogin,
 		functionChangePass,
 		profileMenu,
-		handleChange,
 		handleSearch,
 		handleFilter,
 		handleChangeFilter,
